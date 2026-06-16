@@ -1,0 +1,39 @@
+@model List<SKCatalog.Models.SKClass>
+@{
+    ViewData["Title"] = "Class List";
+}
+
+<div class="mb-2">
+    <a asp-controller="SKClasses" asp-action="Add">Add New Class</a>
+</div>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Class Name</th>
+            <th>Class Number</th>
+            <th>Department</th>
+            <th>Credit Hour</th>
+            <th>Capacity</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Number</td>
+                <td>@item.Department</td>
+                <td>@item.Credit</td>
+                <td>@item.Capacity</td>
+                <td>
+                    <a asp-controller="SKClasses" asp-action="Edit"
+                       asp-route-id="@item.CourseId">Edit</a>
+                    <a asp-controller="SKClasses" asp-action="Delete"
+                       asp-route-id="@item.CourseId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
